@@ -28,49 +28,34 @@ let cards = [
 let cardsInPlay = [];
 
 function checkForMatch() {
-   if (cardsInPlay.length === 2) {
-     if (cardsInPlay[0] === cardsInPlay[1]) {
-       alert("You found a match!");
-     } else if (cardsInPlay[0] !== cardsInPlay[4]) {
-       alert("Sorry Try Again!");
-     } else {
-       console.log("nothing");
-     }
+   if (cardsInPlay[0].rank === cardsInPlay[1].rank) {
+     alert("You found a match!");
+   } else {
+     alert("Sorry, try again.");
    }
 }
 
-function flipCard(cardId) {
 
-  checkForMatch();
- 
-  console.log("User flipped " + cards[cardId].rank);
-
+function flipCard() {
+  let cardId = this.getAttribute('data-id')
+  this.setAttribute("src", cards[cardId].cardImage);
   cardsInPlay.push(cards[cardId].rank);
-  
+  console.log("User flipped " + cards[cardId].rank);
   console.log(cards[cardId].cardImage);
   console.log(cards[cardId].suit);
+  if (cardsInPlay === 2) {
+        checkForMatch();
+  }
+};
+
+
+function createBoard() {
+ for(let i = 0; i < cards.length; i++) {
+   let cardElement = document.createElement('img');
+   cardElement.setAttribute('data-id', i);
+   cardElement.setAttribute("src", "images/back.png");
+   cardElement.addEventListener('click', flipCard);
+   document.getElementById('game-board').appendChild(cardElement);
+  }
 }
-flipCard(0);
-flipCard(2);
-
-
-
-
-// Delete the four strings from the cards array.
-// In the cards array, create four objects, one for each card.
-// HINT: Here's the syntax for creating an array that contains objects:
-
-// const myArray = [
-// {
-// color: 'red',
-// flower: 'rose',
-// petals: 20
-// },
-// {
-// color: 'blue',
-// flower: 'violet',
-// petals: 6
-// }
-// ];
-// Here are the values each object should hold:
-// rank	suit	cardImage
+createBoard();
