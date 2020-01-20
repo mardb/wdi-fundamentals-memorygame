@@ -59,3 +59,13 @@ function createBoard() {
   }
 }
 createBoard();
+
+function reset(){
+  cardsInPlay.length = 0;
+  let newGame = document.getElementById('game-board').innerHTML = null;
+  createBoard();
+}
+
+let button = document.getElementById('reset');
+button.addEventListener('click', reset)
+
