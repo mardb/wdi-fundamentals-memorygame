@@ -28,8 +28,9 @@ let cards = [
 let cardsInPlay = [];
 
 function checkForMatch() {
-   if (cardsInPlay[0].rank === cardsInPlay[1].rank) {
+   if (cardsInPlay[0] === cardsInPlay[1]) {
      alert("You found a match!");
+
    } else {
      alert("Sorry, try again.");
    }
