@@ -44,7 +44,7 @@ function flipCard() {
   console.log("User flipped " + cards[cardId].rank);
   console.log(cards[cardId].cardImage);
   console.log(cards[cardId].suit);
-  if (cardsInPlay === 2) {
+  if (cardsInPlay.length === 2) {
         checkForMatch();
   }
 };
@@ -69,4 +69,5 @@ function reset(){
 
 let button = document.getElementById('reset');
 button.addEventListener('click', reset)
+
 
